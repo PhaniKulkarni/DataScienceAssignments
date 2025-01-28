@@ -5,8 +5,10 @@ DS2: Document-based Retrieval-Augmented Generation (RAG)
 
 #Project 1: Sentiment Analysis of IMDb Reviews
 1. Files Explanation
+   
 (a) ingestion.py
       Downloads the IMDb dataset, processes it into a pandas DataFrame, and stores it in a SQLite database (imdb_reviews.db).
+      
 (b) cleaning.py
       Cleans raw text reviews by:
       Converting to lowercase
