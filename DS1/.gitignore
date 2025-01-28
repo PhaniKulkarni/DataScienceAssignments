@@ -1,0 +1,4 @@
+models/model.pkl
+imdb_reviews_cleaned.db
+imdb_reviews.db
+__pycache__
