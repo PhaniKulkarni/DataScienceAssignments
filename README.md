@@ -54,7 +54,7 @@ Download the LLaMA 2 model file (llama-2-7b-chat.ggmlv3.q8_0.bin) and place it i
 
 1. Files Explanation
    (a) data_preprocessing.py:
-       Loads and preprocesses PDF files from the data/ folder.
+       Loads and preprocesses PDF files from the data/ folder. Here I have uploaded 1 sample file and 1 diabetic information file
        Splits documents into manageable chunks and cleans text for embedding.
 
    (b) data_embedding.py:
@@ -91,5 +91,5 @@ Example Body:
 GET Request:
 Endpoint: http://127.0.0.1:5000/history
 
-
+The output screenshots are also provided in the word file
 
