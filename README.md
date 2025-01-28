@@ -5,21 +5,21 @@ DS2: Document-based Retrieval-Augmented Generation (RAG)
 
 #Project 1: Sentiment Analysis of IMDb Reviews
 1. Files Explanation
-ingestion.py
-Downloads the IMDb dataset, processes it into a pandas DataFrame, and stores it in a SQLite database (imdb_reviews.db).
-cleaning.py
-Cleans raw text reviews by:
-Converting to lowercase
-Removing HTML tags
-Removing punctuation
-Saves the cleaned data into imdb_reviews_cleaned.db.
+(a) ingestion.py
+      Downloads the IMDb dataset, processes it into a pandas DataFrame, and stores it in a SQLite database (imdb_reviews.db).
+(b) cleaning.py
+      Cleans raw text reviews by:
+      Converting to lowercase
+      Removing HTML tags
+      Removing punctuation
+      Saves the cleaned data into imdb_reviews_cleaned.db.
 
-model_training.py
-Trains a Naive Bayes sentiment analysis model using cleaned IMDb data.
-Saves the trained model and vectorizer as model.pkl in the models/ directory.
+(c) model_training.py
+      Trains a Naive Bayes sentiment analysis model using cleaned IMDb data.
+      Saves the trained model and vectorizer as model.pkl in the models/ directory.
 
-app.py
-Provides a Flask-based API to serve predictions using the trained model.
+(d) app.py
+      Provides a Flask-based API to serve predictions using the trained model.
 
 2. Databases
 imdb_reviews.db: Contains raw data ingested from the IMDb dataset.
