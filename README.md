@@ -91,5 +91,5 @@ Example Body:
 GET Request:
 Endpoint: http://127.0.0.1:5000/history
 
-The output screenshots are also provided in the word file
+The output screenshots are also provided in the word file in the respective DS1 and DS2 folders
 
