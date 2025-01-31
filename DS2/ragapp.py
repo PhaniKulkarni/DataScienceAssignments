@@ -3,14 +3,16 @@ import sqlite3
 from flask import Flask, request, jsonify
 from datetime import datetime
 from data_generation import generate_response
-
+from data_preprocessing import load_and_preprocess_pdfs
+from data_embedding import store_embeddings_and_vectorstore
+from data_embedding import load_vectorstore
 # Initialize Flask ragapp
 ragapp = Flask(__name__)
 
 
 VECTORSTORE_PATH = "faiss_index"
 DATABASE_PATH = "conversation_log.db"
-
+DATA_FOLDER="data"
 
 def init_db():
     if not os.path.exists(DATABASE_PATH):
@@ -65,16 +67,31 @@ def get_chat_history():
 @ragapp.route('/generate', methods=['POST'])
 def generate():
     # Get the query from the POST request
+    '''
     data = request.get_json()
     user_query = data.get('query')
 
     if not user_query:
         return jsonify({"error": "Query is required"}), 400
-
+    '''
     try:
         # Log user query to the database
-        log_conversation('user', user_query)
         
+        if 'file' not in request.files:
+            return jsonify({"error": "No file part in the request"}), 400
+        
+        file = request.files['file']
+        user_query = request.form.get('query')  # Get the query text from form data
+
+        if not user_query:
+            return jsonify({"error": "Query text is required"}), 400
+        file_path = os.path.join(DATA_FOLDER, file.filename)
+        file.save(file_path)
+        log_conversation('user', user_query)
+        documents = load_and_preprocess_pdfs(DATA_FOLDER)
+
+        store_embeddings_and_vectorstore(documents, VECTORSTORE_PATH)
+
         # Generate the response using the generate_response function
         response = generate_response(user_query, VECTORSTORE_PATH)
         
@@ -100,4 +117,4 @@ if __name__ == '__main__':
     init_db()
     
     # Run the Flask ragapp
-    ragapp.run(debug=True)
+    ragapp.run(debug=False)
