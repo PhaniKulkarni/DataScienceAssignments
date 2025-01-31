@@ -61,7 +61,6 @@ prompt_toolkit==3.0.48
 propcache==0.2.1
 protobuf==5.29.1
 psutil==5.9.8
-psycopg2==2.9.9
 ptyprocess==0.7.0
 pure_eval==0.2.3
 py-cpuinfo==9.0.0
