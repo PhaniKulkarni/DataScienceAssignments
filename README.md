@@ -75,19 +75,17 @@ Download the LLaMA 2 model file (llama-2-7b-chat.ggmlv3.q8_0.bin) and place it i
 
 3. Execution Flow:
    
-    Preprocess the data and generate embeddings:
-      python data_embedding.py
-   
     Run the Flask application:
       python ragapp.py
 
 5. Test the API:
 POST Request:
 Endpoint: http://127.0.0.1:5000/generate
-Example Body:
+Example Form:
 {
     "query": "type your query"
 }
+and file: attach the document
 GET Request:
 Endpoint: http://127.0.0.1:5000/history
 
